@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{
+    background:rgb(161, 125, 70)
+}
+.button {
+    width: 500px;
+    height: 500px;
+    background-color: rgb(161, 192, 23);
+    border-radius: 100px;
+    margin: 0 auto;
+    line-height: 200px;
+    user-select: none;
+    box-shadow: rgba(238, 255, 0, 0.5) 20px 20px 0px;
+    border: 50px solid rgb(135, 150, 4);
+    transform: translate(20px,0px);
+}
+.button:hover:after {
+  background-color: transparent;
+}
+
+.button:active {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
+    transform: translate(40px,20px);
+}
+.upgrade_button {
+  width: 500px;
+  height: 100px;
+  background-color: rgb(161, 192, 23);
+  border-radius: 100px;
+  margin: 0 auto;
+  line-height: 200px;
+  user-select: none;
+  box-shadow: rgba(238, 255, 0, 0.5) 20px 20px 0px;
+  border: 50px solid rgb(135, 150, 4);
+  transform: translate(-620px,-650px);
+  margin-top: 60px;
+  font-size: 50px;
+  line-height: 100px;
+  text-align: center;
+  color: rgb(255, 230, 2);
+}
+.upgrade_button:hover:after {
+  background-color: transparent;
+}
+
+.upgrade_button:active {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    transform: translate(-600px, -630px);
+}
+.autobutton {
+  width: 500px;
+  height: 100px;
+  background-color: rgb(161, 192, 23);
+  border-radius: 100px;
+  margin: 0 auto;
+  line-height: 200px;
+  user-select: none;
+  box-shadow: rgba(238, 255, 0, 0.5) 20px 20px 0px;
+  border: 50px solid rgb(135, 150, 4);
+  transform: translate(-620px,-690px);
+  margin-top: 60px;
+  font-size: 50px;
+  line-height: 100px;
+  text-align: center;
+  color: rgb(255, 230, 2);
+}
+.autobutton:hover:after {
+  background-color: transparent;
+}
+
+.autobutton:active {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    transform: translate(-600px, -670px);
+}
+#score {
+    margin-top: 60px;
+    font-size: 70px;
+    color: rgb(255, 230, 2);
+    text-align: center;
+}
+</style>
+<div id="score">0</div>
+<div class="button"></div>
+<div class="upgrade_button">upgrade x1: price 100$</div>
+<div class="autobutton">auto +0: price 25$</div>
+<script>
+    let counter = 0;
+    let bust = 1;
+    let price = 100
+    let auto = 0
+    let price_auto = 25
+    gameloop()
+    document.getElementsByClassName('button')[0].onclick = () => {
+      counter = counter + bust;
+      document.getElementById('score').innerText = counter;
+    };
+    document.getElementsByClassName('upgrade_button')[0].onclick = () => {
+      if (price - 1 < counter){
+        counter = counter - price
+        price *= 2
+        bust += 1
+        document.getElementsByClassName('upgrade_button')[0].innerText = ('upgrade x' + bust + ': price ' + price + '$')
+        document.getElementById('score').innerText = counter;
+      }
+    }
+    document.getElementsByClassName('autobutton')[0].onclick = () => {
+      if (price_auto - 1 < counter){
+        counter = counter - price_auto
+        price_auto *= 2
+        auto += 1
+        document.getElementsByClassName('autobutton')[0].innerText = ('upgrade +' + auto + ': price ' + price_auto + '$')
+        document.getElementById('score').innerText = counter;
+      }
+    }
+    function gameloop(){
+      setTimeout(gameloop, 1000);
+      counter += auto
+      document.getElementById('score').innerText = counter
+    }
+  </script>
+</head>
+<a href=»page.com» target=»_blank»>ссылка/текст ссылки</a>
+</html>
